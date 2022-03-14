@@ -1,18 +1,30 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="banner-container">
+    <div class="banner-titles">
+      <h1>Reading Nook</h1>
+      <h2 class="tagline">Find your favorite book series</h2>
+    </div>
+    <img id="girl-reading" src="../assets/images/Girl-reading.png" alt="">
+  </div>
+  <div class="grid-container">
+    <div class="filter-column">
+      <p>this is the column</p>
+      
+    </div>
+    <div class="results-column">
+      <CollectionCard />
+      <CollectionCard />
+      <CollectionCard />
+      <CollectionCard />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import CollectionCard from '@/components/CollectionCard'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
+  components: { CollectionCard }
 }
 </script>

@@ -1,0 +1,92 @@
+/* 1 - Custom fonts */
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Dancing+Script&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+
+/* 2 - Variables */
+
+:root {
+    --background: #CBDBD6;
+    --column-light-text: #fcfaf0;
+    --banner: #3f7d7b;
+    --tags-dark-text: #0c3741;
+    --bookmarks: #e9ac36;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background: var(--background);
+}
+
+
+/* 3 - Containers */
+
+.banner-container {
+    background: var(--banner);
+}
+
+.filter-column {
+    display: none;
+}
+
+.collection-container {
+    background-color: var(--column-light-text);
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 480px) {
+    .banner-container {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        height: 500px;
+    }
+
+    .filter-column {
+        display: block;
+        grid-column: 1 / 2;
+        background-color: var(--column-light-text);
+    }
+
+    .results-column {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .collection-container {
+        height: 200px;
+        width: 45%;
+        margin-top: 30px; 
+    }
+}
+
+/* 4 - Banner */
+
+.banner-titles {
+    color: var(--column-light-text);
+    margin: auto 0;
+}
+
+h1 {
+    font-family: 'Clicker Script', cursive;
+    font-size: 9rem;
+}
+
+.tagline {
+    font-weight: 300;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+#girl-reading {
+    padding: 3rem 0;
+}
