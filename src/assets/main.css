@@ -67,6 +67,12 @@ body {
         width: 45%;
         margin-top: 30px; 
     }
+
+    .collection-header {
+        text-align: left;
+        margin-left: 1.5rem;
+        margin-top: 1rem;
+    }
 }
 
 /* 4 - Banner */
@@ -89,4 +95,52 @@ h1 {
 
 #girl-reading {
     padding: 3rem 0;
+}
+
+
+/* 5 - Filter Column */
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+
+}
+
+.tags {
+    background-color: var(--tags-dark-text);
+    list-style: none;
+    font-size: 0.9rem;
+    color: var(--column-light-text);
+    border-radius: 0.25rem;
+    padding: 0.1rem 0.8rem;
+    margin: 0.3rem 0.5rem;
+    font-weight: 500;
+}
+
+.category-title {
+    margin-top: 3rem;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    text-align: left;
+    margin-left: 1.7rem;
+}
+
+.checkbox-item {
+    text-align: left;
+    margin-left: 1.7rem;
+    color: var(--tags-dark-text);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.filter-button {
+    background-color: var(--tags-dark-text);
+    color: var(--column-light-text);
+    font-size: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: .4rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
 }
