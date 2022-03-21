@@ -91,12 +91,22 @@
         </form>
     </div>
     <div class="results-column">
-      <CollectionCard />
-      <CollectionCard />
-      <CollectionCard />
-      <CollectionCard />
+      <CollectionCard query="october+daye+mcguire"/>
+      <CollectionCard query="jane+yellowrock+hunter"/>
+      <CollectionCard query="sevenwaters+marillier"/>
+      <CollectionCard query="newsflesh+mcguire"/>
+      <CollectionCard query="interdependence+scalzi"/>
+      <CollectionCard query="rivers+london+aaronovich"/>
+      <CollectionCard query="wayward+children+mcguire"/>
+      <CollectionCard query="blackthorne+marillier"/>
+      <CollectionCard query="incrypted+seanan+mcguire"/>
+      <CollectionCard query="parasitology+seanan+mcguire"/>
     </div>
+
+    
   </div>
+
+
 </template>
 
 <script>
@@ -104,6 +114,12 @@ import CollectionCard from '@/components/CollectionCard'
 
 export default {
   name: 'Home',
-  components: { CollectionCard }
+  components: { CollectionCard },
+  data() {
+    return {
+    }
+  }, 
+  methods: {
+  }
 }
 </script>

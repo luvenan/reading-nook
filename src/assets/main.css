@@ -73,6 +73,14 @@ body {
         margin-left: 1.5rem;
         margin-top: 1rem;
     }
+
+    .collection-covers {
+        display: flex;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        justify-content: space-between;
+        border: 1px solid #e9ac36;
+    }
 }
 
 /* 4 - Banner */
@@ -144,3 +152,11 @@ h1 {
     font-weight: 500;
     margin-bottom: 3rem;
 }
+
+/* 6 - Collection Cards */
+
+.thumbnails {
+    
+}
+
+@media screen and (min-width: 480px)
