@@ -1,8 +1,8 @@
 <template>
   <div class="collection-container">
     <div class="collection-header">
-      <h2> October Daye - Seanan McGuire</h2>
-      <h3> 16 books </h3>
+      <h2> {{ series }} - {{ author }}</h2>
+      <h3> {{ volumes }} books </h3>
     </div>
     <div class="collection-covers" >
       <div class="thumbnails-container" v-for="(book) in newBookdata" :key="book.id">
@@ -18,7 +18,22 @@
 import {apikey} from '../apikey.js';
 
 export default {
-props: ['query'],
+// props: ['series', 'author', 'volumes', 'query'],
+// declaring props like this allows me to use differen types in props
+props: {
+  query: {
+    type: String,
+  },
+  series: {
+    type: String,
+  },
+  author: {
+    type: String,
+  },
+  volumes: {
+    type: Number,
+  }
+},
 data() {
     return {
       loading: true,

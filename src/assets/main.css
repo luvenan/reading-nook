@@ -63,27 +63,26 @@ body {
     }
 
     .collection-container {
-        height: 200px;
         width: 45%;
-        margin-top: 30px; 
+        margin-top: 2rem;
+        padding-bottom: 1.2rem;
     }
 
     .collection-header {
-        text-align: left;
+        text-align: center;
         margin-left: 1.5rem;
         margin-top: 1rem;
+        margin-bottom: 1rem;
     }
 
     .collection-covers {
         display: flex;
         margin-left: 1.5rem;
         margin-right: 1.5rem;
-        justify-content: space-between;
-        border: 1px solid #e9ac36;
+        justify-content: space-around;
     }
 
     .thumbnails-container {
-        border: 1px solid red;
     }
 }
 

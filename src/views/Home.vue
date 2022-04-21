@@ -91,16 +91,16 @@
         </form>
     </div>
     <div class="results-column">
-      <CollectionCard query="october+daye+mcguire"/>
-      <CollectionCard query="jane+yellowrock+hunter"/>
-      <CollectionCard query="sevenwaters+marillier"/>
-      <CollectionCard query="newsflesh+mcguire"/>
-      <CollectionCard query="interdependence+scalzi"/>
-      <CollectionCard query="rivers+london+aaronovich"/>
-      <CollectionCard query="wayward+children+mcguire"/>
+      <CollectionCard series="October Daye" author="Seanan McGuire" volumes=16 query="october+daye+mcguire"/>
+      <CollectionCard series="Jane Yellowrock" author="Faith Hunter" volumes=15 query="jane+yellowrock+hunter"/>
+      <CollectionCard series="Sevenwaters" author="Juliet Marillier" volumes=6 query="sevenwaters+marillier"/>
+      <CollectionCard series="Newsflesh" author="Mira Grant" volumes=4 query="newsflesh+mcguire"/>
+      <CollectionCard series="The Interdependency" author="John Scalzi" volumes=3 query="interdependence+scalzi"/>
+      <CollectionCard series="Rivers of London" author="John Aaronovich" volumes=9 query="rivers+london+aaronovich"/>
+      <!-- <CollectionCard query="wayward+children+mcguire"/> -->
       <!-- <CollectionCard query="blackthorne+marillier"/> -->
-      <CollectionCard query="incrypted+seanan+mcguire"/>
-      <CollectionCard query="parasitology+seanan+mcguire"/>
+      <CollectionCard series="Incryptid" author="Seanan McGuire" volumes=11 query="incrypted+seanan+mcguire"/>
+      <CollectionCard series="Parasitology" author="Mira Grant" volumes=3 query="parasitology+seanan+mcguire"/>
     </div>
 
     
