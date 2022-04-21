@@ -98,7 +98,7 @@
       <CollectionCard query="interdependence+scalzi"/>
       <CollectionCard query="rivers+london+aaronovich"/>
       <CollectionCard query="wayward+children+mcguire"/>
-      <CollectionCard query="blackthorne+marillier"/>
+      <!-- <CollectionCard query="blackthorne+marillier"/> -->
       <CollectionCard query="incrypted+seanan+mcguire"/>
       <CollectionCard query="parasitology+seanan+mcguire"/>
     </div>

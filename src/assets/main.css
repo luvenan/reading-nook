@@ -81,6 +81,10 @@ body {
         justify-content: space-between;
         border: 1px solid #e9ac36;
     }
+
+    .thumbnails-container {
+        border: 1px solid red;
+    }
 }
 
 /* 4 - Banner */
@@ -156,7 +160,7 @@ h1 {
 /* 6 - Collection Cards */
 
 .thumbnails {
-    
+    width: 120px;
 }
 
 @media screen and (min-width: 480px)
