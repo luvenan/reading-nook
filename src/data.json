@@ -5,6 +5,7 @@
             "title": "October Daye",
             "author": "Seanan McGuire",
             "query": "october+daye+mcguire",
+            "genre": "Urban Fantasy",
             "volumes": 16
         },
         {
@@ -12,6 +13,7 @@
             "title": "Jane Yellowrock",
             "author": "Faith Hunter",
             "query": "yellowrock+hunter",
+            "genre": "Urban Fantasy",
             "volumes": 15
         },
         {
@@ -19,6 +21,7 @@
             "title": "Sevenwaters",
             "author": "Juliet Marillier",
             "query": "sevenwaters+juliet+marillier",
+            "genre": "Fantasy",
             "volumes": 6
         },
         {
@@ -26,6 +29,7 @@
             "title": "Newsflesh",
             "author": "Mira Grant",
             "query": "newsflesh+mira+grant",
+            "genre": "Dystopia",
             "volumes": 4
         },
         {
@@ -33,6 +37,7 @@
             "title": "The Interdependency",
             "author": "John Scalzi",
             "query": "interdependency+john+scalzi",
+            "genre": "Sci-fi",
             "volumes": 3
         },
         {
@@ -40,6 +45,7 @@
             "title": "The Bridei Chronicles",
             "author": "Juliet Marillier",
             "query": "bridei+chronicles+marillier",
+            "genre": "Fantasy",
             "volumes": 3
         },
         {
@@ -47,6 +53,7 @@
             "title": "Incryptid",
             "author": "Seanan McGuire",
             "query": "incryptid+seanan+mcguire",
+            "genre": "Urban Fantasy",
             "volumes": 11
         },
         {
@@ -54,6 +61,7 @@
             "title": "Parasitology",
             "author": "Mira Grant",
             "query": "parasitology+mira+grant",
+            "genre": "Dystopia",
             "volumes": 3
         }
     ]

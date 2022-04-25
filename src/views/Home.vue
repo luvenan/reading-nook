@@ -20,70 +20,45 @@
         </div>
         
         <div class="filter-checkboxes">
-          <h3 class="category-title">Category</h3>
-            <div class="checkbox-item">
-            <input type="checkbox" id="urban fantasy" name="urban fantasy" value="urban fantasy">
-            <label for="urban fantasy"> Urban Fantasy</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="dystopia" name="dystopia" value="dystopia">
-            <label for="dystopia"> Dystopia</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="sci-fi" name="sci-fi" value="sci-fi">
-            <label for="sci-fi"> Sci-fi</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="young adult" name="young adult" value="young adult">
-            <label for="young adult"> Young Adult</label>
+          <!-- Genres -->
+          <h3 class="category-title">Genre</h3>
+            <div class="checkbox-item genre" v-for="genre in genresList" :key="genre">
+              <input type="checkbox" :id="genre" :value="genre" v-model="selected.genre">
+              <label :for="genre">{{ ' ' + genre }}</label>
             </div>
 
+          <!-- Authors -->
           <h3 class="category-title">Author</h3>
-            <div class="checkbox-item">
-            <input type="checkbox" id="seannan mcguire" name="seannan mcguire" value="seannan mcguire">
-            <label for="seannan mcguire"> Seannan Mcguire</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="juliet marillier" name="juliet marillier" value="juliet marillier">
-            <label for="juliet marillier"> Juliet Marillier</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="faith hunter" name="faith hunter" value="faith hunter">
-            <label for="faith hunter"> Faith Hunter</label>
-            </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="john scalzi" name="john scalzi" value="john scalzi">
-            <label for="john scalzi"> John Scalzi</label>
+            <div class="checkbox-item authors" v-for="author in authorsList" :key="author">
+              <input type="checkbox" :id="author" :value="author" v-model="selected.author">
+              <label :for="author">{{ ' ' + author }}</label>
             </div>
 
           <h3 class="category-title">Number of Books Released</h3>
+          {{ selected.volumes }}
+          {{ selected.arraysVolumes }}
+          {{ testvar }}
             <div class="checkbox-item">
-            <input type="checkbox" id="1-3" name="1-3" value="1-3">
+            <input type="checkbox" id="1-3" name="1-3" value=3 v-model.number="selected.volumes">
             <label for="1-3"> 1-3</label>
             </div>
             
             <div class="checkbox-item">
-            <input type="checkbox" id="4-7" name="4-7" value="4-7">
+            <input type="checkbox" id="4-7" name="4-7" value=7 v-model.number="selected.volumes">
             <label for="4-7"> 4-7</label>
             </div>
             
             <div class="checkbox-item">
-            <input type="checkbox" id="8-15" name="8-15" value="8-15">
-            <label for="8-15"> 8-15</label>
+            <input type="checkbox" id="8-12" name="8-12" value=12 v-model.number="selected.volumes">
+            <label for="8-12"> 8-12</label>
             </div>
             
             <div class="checkbox-item">
-            <input type="checkbox" id="16+" name="16+" value="16+">
-            <label for="16+"> 16+</label>
+            <input type="checkbox" id="13+" name="13+" value.number=100 v-model.number="selected.volumes">
+            <label for="13+"> 13+</label>
             </div>
           
-            <input class="filter-button" type="submit" value="Filter">
+            <!--This may not be necessary <input class="filter-button" type="submit" value="Filter"> -->
           </div>
         </form>
     </div>
@@ -91,11 +66,6 @@
       <div class="results" v-for="series in filteredResults" :key="series.id">
         <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query"/>
       </div>
-
-
-      <!-- 
-      <CollectionCard series="Rivers of London" author="John Aaronovich" volumes=9 query="rivers+london+aaronovich"/> 
-    -->
     </div>
 
     
@@ -114,15 +84,45 @@ export default {
   data() {
     return {
       results: sourceData.series,
-      search: ''
+      search: '',
+      //Variables to populate the filter categories
+      authorsList: [],
+      genresList: [],
+      testvar: [],
+      //Variables selected by the user to filter results
+      selected: {
+        author: [],
+        genre: [],
+        volumes: [],
+        // arraysVolumes: []
+      }
     }
   },
+  mounted() {
+    //Populates the list of authors based on existing authors in the books, makes sure no duplicates
+    this.authorsList = new Set (this.results.map(series => series.author))
+    //Populates the list of categories based on existing categories in the books, makes sure no duplicates
+    this.genresList = new Set (this.results.map(series => series.genre))
+  },
+
   computed: {
+    // This is to turn the volumes range into an array, this solution is cluncky so I'm trying to find another way
+    arraysVolumes: function() {
+      this.testvar = new Array (this.selected.volumes.map(range => range.split(', ').map(Number)))
+    }, 
     filteredResults: function(){
       return this.results.filter((series) => {
-        if (series.title.toLowerCase().includes(this.search.toLowerCase()) || series.author.toLowerCase().includes(this.search.toLowerCase())) {
-          return series
+        //Filters based in selected authors
+        if (this.selected.author.length > 0 || this.selected.genre.length > 0) {
+          return this.selected.author.includes(series.author) || this.selected.genre.includes(series.genre)
+        } else {
+          return true
         }
+
+        //How to have these both at once? Checks if the the search query is in the series title or author name
+        // if (series.title.toLowerCase().includes(this.search.toLowerCase()) || series.author.toLowerCase().includes(this.search.toLowerCase())) {
+        //   return series
+        // }
       })
     }
   },
