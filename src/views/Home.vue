@@ -9,6 +9,8 @@
   <div class="grid-container">
     <div class="filter-column">
       <!-- search bar -->
+      <input type="text" v-model="search" placeholder="search series">
+
       <form action="">
         <div class="tags-container">
           <li class="tags">#fae</li>
@@ -59,11 +61,6 @@
             <input type="checkbox" id="john scalzi" name="john scalzi" value="john scalzi">
             <label for="john scalzi"> John Scalzi</label>
             </div>
-            
-            <div class="checkbox-item">
-            <input type="checkbox" id="ben aaronovitch" name="ben aaronovitch" value="ben aaronovitch">
-            <label for="ben aaronovitch"> Ben Aaronovitch</label>
-            </div>
 
           <h3 class="category-title">Number of Books Released</h3>
             <div class="checkbox-item">
@@ -91,16 +88,14 @@
         </form>
     </div>
     <div class="results-column">
-      <CollectionCard series="October Daye" author="Seanan McGuire" volumes=16 query="october+daye+mcguire"/>
-      <CollectionCard series="Jane Yellowrock" author="Faith Hunter" volumes=15 query="jane+yellowrock+hunter"/>
-      <CollectionCard series="Sevenwaters" author="Juliet Marillier" volumes=6 query="sevenwaters+marillier"/>
-      <CollectionCard series="Newsflesh" author="Mira Grant" volumes=4 query="newsflesh+mcguire"/>
-      <CollectionCard series="The Interdependency" author="John Scalzi" volumes=3 query="interdependence+scalzi"/>
-      <CollectionCard series="Rivers of London" author="John Aaronovich" volumes=9 query="rivers+london+aaronovich"/>
-      <!-- <CollectionCard query="wayward+children+mcguire"/> -->
-      <!-- <CollectionCard query="blackthorne+marillier"/> -->
-      <CollectionCard series="Incryptid" author="Seanan McGuire" volumes=11 query="incrypted+seanan+mcguire"/>
-      <CollectionCard series="Parasitology" author="Mira Grant" volumes=3 query="parasitology+seanan+mcguire"/>
+      <div class="results" v-for="series in filteredResults" :key="series.id">
+        <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query"/>
+      </div>
+
+
+      <!-- 
+      <CollectionCard series="Rivers of London" author="John Aaronovich" volumes=9 query="rivers+london+aaronovich"/> 
+    -->
     </div>
 
     
@@ -111,14 +106,26 @@
 
 <script>
 import CollectionCard from '@/components/CollectionCard'
+import sourceData from '@/data.json'
 
 export default {
   name: 'Home',
   components: { CollectionCard },
   data() {
     return {
+      results: sourceData.series,
+      search: ''
     }
-  }, 
+  },
+  computed: {
+    filteredResults: function(){
+      return this.results.filter((series) => {
+        if (series.title.toLowerCase().includes(this.search.toLowerCase()) || series.author.toLowerCase().includes(this.search.toLowerCase())) {
+          return series
+        }
+      })
+    }
+  },
   methods: {
   }
 }

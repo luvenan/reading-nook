@@ -1,0 +1,60 @@
+{
+    "series": [
+        {
+            "id": 1,
+            "title": "October Daye",
+            "author": "Seanan McGuire",
+            "query": "october+daye+mcguire",
+            "volumes": 16
+        },
+        {
+            "id": 2,
+            "title": "Jane Yellowrock",
+            "author": "Faith Hunter",
+            "query": "yellowrock+hunter",
+            "volumes": 15
+        },
+        {
+            "id": 3,
+            "title": "Sevenwaters",
+            "author": "Juliet Marillier",
+            "query": "sevenwaters+juliet+marillier",
+            "volumes": 6
+        },
+        {
+            "id": 4,
+            "title": "Newsflesh",
+            "author": "Mira Grant",
+            "query": "newsflesh+mira+grant",
+            "volumes": 4
+        },
+        {
+            "id": 5,
+            "title": "The Interdependency",
+            "author": "John Scalzi",
+            "query": "interdependency+john+scalzi",
+            "volumes": 3
+        },
+        {
+            "id": 6,
+            "title": "The Bridei Chronicles",
+            "author": "Juliet Marillier",
+            "query": "bridei+chronicles+marillier",
+            "volumes": 3
+        },
+        {
+            "id": 7,
+            "title": "Incryptid",
+            "author": "Seanan McGuire",
+            "query": "incryptid+seanan+mcguire",
+            "volumes": 11
+        },
+        {
+            "id": 8,
+            "title": "Parasitology",
+            "author": "Mira Grant",
+            "query": "parasitology+mira+grant",
+            "volumes": 3
+        }
+    ]
+}

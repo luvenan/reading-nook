@@ -3,6 +3,8 @@
     <div class="collection-header">
       <h2> {{ series }} - {{ author }}</h2>
       <h3> {{ volumes }} books </h3>
+
+      <p>{{query}}</p>
     </div>
     <div class="collection-covers" >
       <div class="thumbnails-container" v-for="(book) in newBookdata" :key="book.id">

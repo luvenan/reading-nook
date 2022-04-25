@@ -63,9 +63,10 @@ body {
     }
 
     .collection-container {
-        width: 45%;
+        /* width: 45%; */
         margin-top: 2rem;
-        padding-bottom: 1.2rem;
+        /* padding-bottom: 1.2rem; */
+        padding: 1.2rem 3rem;
     }
 
     .collection-header {
