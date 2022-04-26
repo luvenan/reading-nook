@@ -103,6 +103,9 @@ export default {
       }
     }
   },
+  created() {
+    document.title = "Reading Nook"
+  },
   mounted() {
     //Populates the list of authors based on existing authors in the books, makes sure no duplicates
     this.authorsList = new Set (this.results.map(series => series.author))
