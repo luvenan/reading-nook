@@ -1,15 +1,22 @@
 <template>
-  <div class="collection-container">
-    <div class="collection-header">
-      <h2> {{ series }} - {{ author }}</h2>
-      <h3> {{ volumes }} books </h3>
+  <div class="collection-header">
+    <h2> {{ series }} - {{ author }}</h2>
+    <h3> {{ volumes }} books </h3>
+  </div>
+  <div class="collection-covers" >
+    <!-- <div class="gray-covers">
+      
     </div>
-    <div class="collection-covers" >
-      <div class="thumbnails-container" v-for="(book) in newBookdata" :key="book.id">
-        <a :href="book.previewLink">
-          <img class="thumbnails" :src="book.thumbnail" :alt="book.title">
-        </a>
-      </div>
+    <div class="gray-covers">
+      
+    </div>
+    <div class="gray-covers">
+      
+    </div> -->
+    <div class="thumbnails-container" v-for="(book) in newBookdata" :key="book.id">
+      <a :href="book.previewLink">
+        <img class="thumbnails" :src="book.thumbnail" :alt="book.title">
+      </a>
     </div>
   </div>
 </template>
