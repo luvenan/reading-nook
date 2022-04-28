@@ -9,15 +9,19 @@
   <div class="grid-container">
     <div class="filter-column">
       <!-- search bar -->
-      <input type="text" v-model="search" placeholder="search series">
-
+      <div class="search-container">
+        <Icon class="icon" icon="mdi:magnify" />
+        <input class="search-box" type="text" v-model="search" placeholder=" Search">
+      </div>
+      
+      
       <form action="">
-        <div class="tags-container">
+        <!-- Not sure I will be using tags in the end <div class="tags-container">
           <li class="tags">#fae</li>
           <li class="tags">#shape-shifters</li>
           <li class="tags">#vampires</li>
           <li class="tags">#zombies</li>
-        </div>
+        </div> -->
         
         <div class="filter-checkboxes">
           <!-- Genres -->
@@ -34,7 +38,7 @@
               <label :for="author">{{ ' ' + author }}</label>
             </div>
 
-          <h3 class="category-title">Number of Books Released</h3>
+          <h3 class="category-title">Books Released</h3>
 
             <div class="checkbox-item range" v-for="range in volumesRange" :key="range.id">
               <input type="checkbox" :id="range" :value="range" v-model="selected.range">
@@ -59,10 +63,11 @@
 <script>
 import CollectionCard from '@/components/CollectionCard'
 import sourceData from '@/data.json'
+import { Icon } from '@iconify/vue'
 
 export default {
   name: 'Home',
-  components: { CollectionCard },
+  components: { CollectionCard, Icon },
   data() {
     return {
       results: sourceData.series,

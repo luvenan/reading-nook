@@ -18,8 +18,7 @@
 import {apikey} from '../apikey.js';
 
 export default {
-// props: ['series', 'author', 'volumes', 'query'],
-// declaring props like this allows me to use differen types in props
+// Declaring props like this allows me to use different types in props
 props: {
   query: {
     type: String,
@@ -47,7 +46,8 @@ data() {
   }, 
   async created() {
     const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=' + this.query + '&key=' + this.apikey);
-      const booksData = await response.json();
+      const booksData = await response.json()
+      console.log|(booksData);
       this.booksData = booksData;
       //Makes new array of objects with only the information I will need for a limited ammount of books;
       for (let i = 0; i < 3; i++){
