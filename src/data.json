@@ -12,7 +12,7 @@
             "id": 2,
             "title": "Jane Yellowrock",
             "author": "Faith Hunter",
-            "query": "yellowrock+hunter",
+            "query": "yellowrock+faith+hunter",
             "genre": "Urban Fantasy",
             "volumes": 15
         },
@@ -60,7 +60,23 @@
             "id": 8,
             "title": "Parasitology",
             "author": "Mira Grant",
-            "query": "parasitology+mira+grant",
+            "query": "parasitology+seanan+mcguire",
+            "genre": "Dystopia",
+            "volumes": 3
+        },
+        {
+            "id": 9,
+            "title": "Parasitology",
+            "author": "Mira Grant",
+            "query": "",
+            "genre": "Dystopia",
+            "volumes": 3
+        },
+        {
+            "id": 10,
+            "title": "Parasitology",
+            "author": "Mira Grant",
+            "query": "parasitology+seanan+mcguire",
             "genre": "Dystopia",
             "volumes": 3
         }
