@@ -49,10 +49,6 @@
         </form>
     </div>
     <div class="results-column" >
-      <!-- <div class="item"></div>
-      <div class="item"></div>
-      <div class="item"></div>
-      <div class="item"></div> -->
       <div class="results" v-for="series in filteredResults" :key="series.id">
         <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query"/>
       </div>

@@ -66,18 +66,18 @@
         },
         {
             "id": 9,
-            "title": "Parasitology",
-            "author": "Mira Grant",
-            "query": "",
-            "genre": "Dystopia",
-            "volumes": 3
+            "title": "Wayward Children",
+            "author": "Seanan McGuire",
+            "query": "wayward+children+seanan+mcguire",
+            "genre": "Young Adult",
+            "volumes": 7
         },
         {
             "id": 10,
-            "title": "Parasitology",
-            "author": "Mira Grant",
-            "query": "parasitology+seanan+mcguire",
-            "genre": "Dystopia",
+            "title": "Old Man's War",
+            "author": "John Scalzi",
+            "query": "old+man+war+scalzi",
+            "genre": "Sci-fi",
             "volumes": 3
         }
     ]

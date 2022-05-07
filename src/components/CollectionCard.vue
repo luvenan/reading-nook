@@ -59,10 +59,16 @@ data() {
       const booksData = await response.json()
       console.log|(booksData);
       this.booksData = booksData;
+      //Initializes variable necessary for the while loop
+      let i = 0;
       //Makes new array of objects with only the information I will need for a limited ammount of books;
-      for (let i = 0; i < 3; i++){
-        //Filter badly formatted books and sets here
-        // if(!booksData.items[i].volumeInfo.title.includes('Forest')){
+      while (this.newBookdata.length < 3){
+        //Filter out book sets (by removing the ones with the word 'set' in the title and containing the author's name... many will probably still get through, need to find a better way)
+        if(!booksData.items[i].volumeInfo.title.includes('Set') 
+            // && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.author.toLowerCase())
+            // && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.series.toLowerCase())
+            
+          ){
           let newBook = {
           id: booksData.items[i].id,
           title: booksData.items[i].volumeInfo.title,
@@ -70,16 +76,22 @@ data() {
           previewLink: booksData.items[i].volumeInfo.previewLink,
           thumbnail: booksData.items[i].volumeInfo.imageLinks.thumbnail
           }
+          //Add new book to data
           this.newBookdata.push(newBook);
-        // }
-        
+          console.log("The image height is " + booksData.items[i].volumeInfo.thumbnail.height)
+        }
+        //Increment variable for the loop to work properly
+        i++;
       }
+
       return this.newBookdata;
+      
 
 
     } catch (error) {
       console.log(error);
-      for (let i = 0; i < 3; i++){
+      console.log('The query for this book series did not work: ' + this.series);
+      for (let i = 0; i < 2; i++){
         let newBook = {
           id: i + 1,
           // thumbnail: '../assets/images/Placeholder.jpg',
