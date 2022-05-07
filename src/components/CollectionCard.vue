@@ -4,15 +4,7 @@
     <h3> {{ volumes }} books </h3>
   </div>
   <div class="collection-covers" >
-    <!-- <div class="gray-covers">
       
-    </div>
-    <div class="gray-covers">
-      
-    </div>
-    <div class="gray-covers">
-      
-    </div> -->
     <div class="thumbnails-container" v-for="(book) in newBookdata" :key="book.id">
       <a :href="book.previewLink">
         <img v-if="!error" class="thumbnails" :src="book.thumbnail" :alt="book.title">
@@ -65,9 +57,8 @@ data() {
       while (this.newBookdata.length < 3){
         //Filter out book sets (by removing the ones with the word 'set' in the title and containing the author's name... many will probably still get through, need to find a better way)
         if(!booksData.items[i].volumeInfo.title.includes('Set') 
-            // && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.author.toLowerCase())
-            // && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.series.toLowerCase())
-            
+            && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.author.toLowerCase())
+            && !booksData.items[i].volumeInfo.title.toLowerCase().includes(this.series.toLowerCase()) 
           ){
           let newBook = {
           id: booksData.items[i].id,
@@ -78,7 +69,6 @@ data() {
           }
           //Add new book to data
           this.newBookdata.push(newBook);
-          console.log("The image height is " + booksData.items[i].volumeInfo.thumbnail.height)
         }
         //Increment variable for the loop to work properly
         i++;
@@ -91,7 +81,7 @@ data() {
     } catch (error) {
       console.log(error);
       console.log('The query for this book series did not work: ' + this.series);
-      for (let i = 0; i < 2; i++){
+      for (let i = 0; i < 3; i++){
         let newBook = {
           id: i + 1,
           // thumbnail: '../assets/images/Placeholder.jpg',
