@@ -47,14 +47,18 @@
          
           </div>
         </form>
+        <img id="add-series" src="../assets/images/More-books.png" alt="Add new series" v-if="!showAddSeries" @click="showAddSeries = !showAddSeries">
+        <div class="add-series-container" v-if="showAddSeries">
+          <AddSeries/>
+          <button class="close-button" @click="showAddSeries = !showAddSeries">X</button>
+        </div>
     </div>
     <div class="results-column" >
       <div class="results" v-for="series in filteredResults" :key="series.id">
-        <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query"/>
+        <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query" :id="series._id"/>
       </div>
+      
     </div>
-
-    
   </div>
 
 
@@ -62,15 +66,17 @@
 
 <script>
 import CollectionCard from '@/components/CollectionCard'
-import sourceData from '@/data.json'
+// import sourceData from '@/data.json'
 import { Icon } from '@iconify/vue'
+import AddSeries from '../components/AddSeries.vue'
 
 export default {
   name: 'Home',
-  components: { CollectionCard, Icon },
+  components: { CollectionCard, Icon, AddSeries },
   data() {
     return {
-      results: sourceData.series,
+      results: [],
+      newSeries: [],
       search: '',
       //Variables to populate the filter categories
       authorsList: [],
@@ -78,26 +84,10 @@ export default {
       testvar: [],
       //Describes ranges for number of books released
       volumesRange: [
-        {
-          id: 1,
-          min: 1,
-          max: 3,
-        },
-        {
-          id: 2,
-          min: 4,
-          max: 7,
-        },
-        {
-          id: 3,
-          min: 8,
-          max: 12,
-        },
-        {
-          id: 4,
-          min: 13,
-          max: 20,
-        }
+        { id: 1, min: 1, max: 3 },
+        { id: 2, min: 4, max: 7 },
+        { id: 3, min: 8, max: 12 },
+        { id: 4, min: 13, max: 20}
       ],
       //Variables selected by the user to filter results
       selected: {
@@ -105,19 +95,27 @@ export default {
         genre: [],
         volumes: [],
         range: []
-      }
+      },
+      //Variable to toggle the add series button
+      showAddSeries: false
     }
   },
-  created() {
-    document.title = "Reading Nook"
+  async created() {
+    const url = 'api/series/';
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      console.log(data)
+      this.results = data
+      //Populates the list of authors based on existing authors in the books, makes sure no duplicates
+      this.authorsList = new Set (this.results.map(series => series.author))
+      //Populates the list of categories based on existing categories in the books, makes sure no duplicates
+      this.genresList = new Set (this.results.map(series => series.genre))
+    } catch (err) {
+      console.log(err)
+    }
   },
-  mounted() {
-    //Populates the list of authors based on existing authors in the books, makes sure no duplicates
-    this.authorsList = new Set (this.results.map(series => series.author))
-    //Populates the list of categories based on existing categories in the books, makes sure no duplicates
-    this.genresList = new Set (this.results.map(series => series.genre))
-  },
-
+ 
   computed: {
       filteredResults: function(){
         let results

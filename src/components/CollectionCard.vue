@@ -12,38 +12,38 @@
       </a>
     </div>
   </div>
+  <form>
+    <button class="delete-button" @click="handleDelete">X</button>
+  </form>
+  
 </template>
 
 <script>
-import {apikey} from '../apikey.js';
 
 export default {
 // Declaring props like this allows me to use different types in props
 props: {
-  query: {
-    type: String,
-  },
-  series: {
-    type: String,
-  },
-  author: {
-    type: String,
-  },
-  volumes: {
-    type: Number,
-  }
+  query: { type: String },
+  series: { type: String },
+  author: { type: String},
+  volumes: { type: Number },
+  id: { type: String }
 },
 data() {
     return {
       loading: true,
       booksData: {},
-      apikey: apikey,
-      queryParams: 'october + daye',
+      apikey: process.env.VUE_APP_GOOGLEBOOKS_API_KEY,
       newBookdata: [],
       error: false,
     }
   },
   methods: {
+    async handleDelete(){
+      const url = 'api/series/' + this.id;
+      const response = await fetch(url, { method: 'DELETE'});
+      console.log(response)
+    }
   }, 
   async created() {
     try {
