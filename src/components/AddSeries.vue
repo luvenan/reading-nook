@@ -1,5 +1,5 @@
 <template>
-            <form class="add-series-form" @submit="handleSubmit">
+            <form class="add-series-form" @submit.prevent="handleSubmit">
             <h3 class="series-form-title">Add New Series</h3>
             
             <div class="form-field">
@@ -76,6 +76,8 @@ export default {
                 })
                 if(response.ok){
                     console.log('Series added: ' + this.newSeries.title)
+                    //Emit event to update the series list
+                    this.$emit('add-series');
                 } else {
                     throw new Error ('Request failed');
                 }

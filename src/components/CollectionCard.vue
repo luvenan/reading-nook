@@ -12,9 +12,7 @@
       </a>
     </div>
   </div>
-  <form>
-    <button class="delete-button" @click="handleDelete">X</button>
-  </form>
+  <button class="delete-button" @click="handleDelete">X</button>
   
 </template>
 
@@ -42,6 +40,8 @@ data() {
     async handleDelete(){
       const url = 'api/series/' + this.id;
       const response = await fetch(url, { method: 'DELETE'});
+      //Emit event to update the series list
+      this.$emit('delete-series');
       console.log(response)
     }
   }, 

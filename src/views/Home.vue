@@ -49,13 +49,13 @@
         </form>
         <img id="add-series" src="../assets/images/More-books.png" alt="Add new series" v-if="!showAddSeries" @click="showAddSeries = !showAddSeries">
         <div class="add-series-container" v-if="showAddSeries">
-          <AddSeries/>
+          <AddSeries @add-series="updateResults"/>
           <button class="close-button" @click="showAddSeries = !showAddSeries">X</button>
         </div>
     </div>
     <div class="results-column" >
-      <div class="results" v-for="series in filteredResults" :key="series.id">
-        <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query" :id="series._id"/>
+      <div class="results" v-for="series in filteredResults" :key="series._id">
+        <Collection-card :series="series.title" :author="series.author" :volumes="series.volumes" :query="series.query" :id="series._id" :key="updateKey" @delete-series="updateResults"/>
       </div>
       
     </div>
@@ -97,7 +97,9 @@ export default {
         range: []
       },
       //Variable to toggle the add series button
-      showAddSeries: false
+      showAddSeries: false,
+      //Variable to make the results list update when the user adds a new series
+      updateKey: 0
     }
   },
   async created() {
@@ -151,6 +153,22 @@ export default {
     }
   },
   methods: {
+    async updateResults() {
+      const url = 'api/series/';
+      try {
+        const response = await fetch(url)
+        const data = await response.json()
+        console.log(data)
+        this.results = data
+        //Populates the list of authors based on existing authors in the books, makes sure no duplicates
+        this.authorsList = new Set (this.results.map(series => series.author))
+        //Populates the list of categories based on existing categories in the books, makes sure no duplicates
+        this.genresList = new Set (this.results.map(series => series.genre))
+      } catch (err) {
+        console.log(err)
+      }
+      this.updateKey++
+    }
   }
 }
 </script>
